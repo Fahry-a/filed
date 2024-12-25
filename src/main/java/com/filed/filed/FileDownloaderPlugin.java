@@ -1,4 +1,4 @@
-package com.filed.filed;
+package com.yourpackage.filed;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import com.yourpackage.filed.commands.FileCommand;

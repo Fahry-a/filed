@@ -1,0 +1,2 @@
+# Config file for FileDownloaderPlugin
+download-directory: "plugins"

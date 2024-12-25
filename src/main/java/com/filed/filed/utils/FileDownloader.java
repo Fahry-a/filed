@@ -1,4 +1,4 @@
-package com.filed.filed.utils;
+package com.yourpackage.filed.utils;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;

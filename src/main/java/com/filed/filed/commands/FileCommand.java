@@ -1,4 +1,4 @@
-package com.filed.filed.commands;
+package com.yourpackage.filed.commands;
 
 import com.yourpackage.filed.FileDownloaderPlugin;
 import com.yourpackage.filed.utils.FileDownloader;
