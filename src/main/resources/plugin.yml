@@ -1,0 +1,14 @@
+name: Filed
+main: com.filed.filed.FileDownloaderPlugin
+version: 1.0
+api-version: 1.13
+commands:
+  filed:
+    description: File downloader plugin command
+    usage: /<command> <subcommand>
+    aliases: [filed]
+    permission: filed.use
+permissions:
+  filed.use:
+    description: Permission to use the filed commands
+    default: op
