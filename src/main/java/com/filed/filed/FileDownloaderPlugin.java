@@ -1,7 +1,7 @@
-package com.yourpackage.filed;
+package com.filed;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import com.yourpackage.filed.commands.FileCommand;
+import com.filed.commands.FileCommand;
 
 public class FileDownloaderPlugin extends JavaPlugin {
     private double downloadSpeed;

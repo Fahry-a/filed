@@ -1,4 +1,3 @@
 # filed
 a minecraft plugin to download files via direct link 
-```bash
-   vejwhab
+* DOENLOAD SPEED IS NOT WORKING* DOENLOAD SPEED IS NOT WORKING, SO THE ETA FREQUENCY WILL ALSO BE USELESS!

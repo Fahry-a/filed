@@ -1,5 +1,5 @@
 name: Filed
-main: com.yourpackage.filed.FileDownloaderPlugin
+main: com.filed.FileDownloaderPlugin
 version: 1.0
 api-version: 1.13
 commands:

@@ -1,6 +1,6 @@
-package com.yourpackage.filed.utils;
+package com.filed.utils;
 
-import com.yourpackage.filed.FileDownloaderPlugin;
+import com.filed.FileDownloaderPlugin;
 import java.io.*;
 import java.net.URL;
 
@@ -40,8 +40,11 @@ public class FileDownloader {
                 if (currentTime - lastETATime >= etaFrequency * 1000) {
                     // Hitung kecepatan unduh (MB/s) dan ETA (detik)
                     double elapsedTime = (currentTime - startTime) / 1000.0; // dalam detik
-                    double speedMBps = (totalBytesRead * 8) / (elapsedTime * 1024 * 1024); // kecepatan dalam MB/s
+                    double speedMBps = (totalBytesRead / elapsedTime) / (1024 * 1024); // kecepatan dalam MB/s
                     double remainingTime = ((fileSize - totalBytesRead) * 8) / (speedMBps * 1024 * 1024); // ETA dalam detik
+
+                    // Log tambahan untuk debugging
+                    plugin.getLogger().info(String.format("totalBytesRead: %d, elapsedTime: %.2f, speedMBps: %.2f", totalBytesRead, elapsedTime, speedMBps));
 
                     plugin.getLogger().info(String.format("Kecepatan: %.2f MB/s, ETA: %.2f detik", speedMBps, remainingTime));
                     lastETATime = currentTime;

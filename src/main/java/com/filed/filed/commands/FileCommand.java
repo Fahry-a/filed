@@ -1,7 +1,7 @@
-package com.yourpackage.filed.commands;
+package com.filed.commands;
 
-import com.yourpackage.filed.FileDownloaderPlugin;
-import com.yourpackage.filed.utils.FileDownloader;
+import com.filed.FileDownloaderPlugin;
+import com.filed.utils.FileDownloader;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,9 +28,8 @@ public class FileCommand implements CommandExecutor {
                     FileDownloader downloader = new FileDownloader(plugin);
                     downloader.downloadFile(url, saveDir);
                     sender.sendMessage("Mengunduh file dari: " + url);
-                }
-                else {
-                  sender.sendMessage("Usage: /filed download <url>");
+                } else {
+                    sender.sendMessage("Usage: /filed download <url>");
                 }
                 break;
 
