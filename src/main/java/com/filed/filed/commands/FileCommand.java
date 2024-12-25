@@ -17,24 +17,44 @@ public class FileCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage("Usage: /filed <download|reload>");
+            sender.sendMessage("Usage: /filed <download|reload|setspeed>");
             return true;
         }
 
-        if (args[0].equalsIgnoreCase("download") && args.length == 2) {
-            String url = args[1];
-            FileDownloader.downloadFile(url, plugin.getConfig().getString("download-directory"));
-            sender.sendMessage("Downloading file from: " + url);
-            return true;
-        }
+        switch (args[0].toLowerCase()) {
+            case "download":
+                if (args.length == 2) {
+                    String url = args[1];
+                    String saveDir = plugin.getConfig().getString("download-directory", "downloads");
+                    FileDownloader.downloadFile(url, saveDir);
+                    sender.sendMessage("Downloading file from: " + url);
+                } else {
+                    sender.sendMessage("Usage: /filed download <url>");
+                }
+                break;
 
-        if (args[0].equalsIgnoreCase("reload")) {
-            plugin.reloadPlugin();
-            sender.sendMessage("Plugin configuration reloaded.");
-            return true;
-        }
+            case "reload":
+                plugin.reloadPlugin();
+                sender.sendMessage("Plugin configuration reloaded.");
+                break;
 
-        sender.sendMessage("Usage: /filed <download|reload>");
+            case "setspeed":
+                if (args.length == 2) {
+                    try {
+                        double speed = Double.parseDouble(args[1]);
+                        plugin.setDownloadSpeed(speed);
+                        sender.sendMessage("Kecepatan unduh diatur ke " + speed + " MBps");
+                    } catch (NumberFormatException e) {
+                        sender.sendMessage("Kecepatan unduh harus berupa angka.");
+                    }
+                } else {
+                    sender.sendMessage("Usage: /filed setspeed <speed>");
+                }
+                break;
+
+            default:
+                sender.sendMessage("Usage: /filed <download|reload|setspeed>");
+        }
         return true;
     }
 }
