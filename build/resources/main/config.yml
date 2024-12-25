@@ -1,2 +1,4 @@
-# Config file for FileDownloaderPlugin
-download-directory: "plugins"
+# Konfigurasi untuk plugin File Downloader
+speed: 1.0
+download-directory: plugins
+eta_frequency: 1  # Frekuensi ETA dalam detik. Misalnya, 1 berarti ETA akan muncul setiap 1 detik

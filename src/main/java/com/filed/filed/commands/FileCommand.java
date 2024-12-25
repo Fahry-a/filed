@@ -7,7 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class FileCommand implements CommandExecutor {
-
     private final FileDownloaderPlugin plugin;
 
     public FileCommand(FileDownloaderPlugin plugin) {
@@ -26,16 +25,18 @@ public class FileCommand implements CommandExecutor {
                 if (args.length == 2) {
                     String url = args[1];
                     String saveDir = plugin.getConfig().getString("download-directory", "downloads");
-                    FileDownloader.downloadFile(url, saveDir);
-                    sender.sendMessage("Downloading file from: " + url);
-                } else {
-                    sender.sendMessage("Usage: /filed download <url>");
+                    FileDownloader downloader = new FileDownloader(plugin);
+                    downloader.downloadFile(url, saveDir);
+                    sender.sendMessage("Mengunduh file dari: " + url);
+                }
+                else {
+                  sender.sendMessage("Usage: /filed download <url>");
                 }
                 break;
 
             case "reload":
                 plugin.reloadPlugin();
-                sender.sendMessage("Plugin configuration reloaded.");
+                sender.sendMessage("Konfigurasi plugin dimuat ulang.");
                 break;
 
             case "setspeed":
@@ -43,7 +44,7 @@ public class FileCommand implements CommandExecutor {
                     try {
                         double speed = Double.parseDouble(args[1]);
                         plugin.setDownloadSpeed(speed);
-                        sender.sendMessage("Kecepatan unduh diatur ke " + speed + " MBps");
+                        sender.sendMessage("Kecepatan unduh diatur ke " + speed + " MBps.");
                     } catch (NumberFormatException e) {
                         sender.sendMessage("Kecepatan unduh harus berupa angka.");
                     }
